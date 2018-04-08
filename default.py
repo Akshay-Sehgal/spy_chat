@@ -1,4 +1,7 @@
-spy_name='PierceBrosnan'
-spy_rating='A+'
-spy_salutation='Mr.'
-spy_age=27
+#default details of spy
+spy = {
+'name':'PierceBrosnan',
+'age':27,
+'rating':'A+',
+'salutation':'Mr.'
+}
