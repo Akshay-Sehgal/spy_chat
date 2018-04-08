@@ -1,8 +1,8 @@
 # importing Modules
 import sys
-from default import spy
+from spy_class import Spy
 import add_status as AS
-import add_friend as AF
+import spy_friend as SF
 
 
 #start_chat() function
@@ -16,13 +16,13 @@ def start_chat():
         #input choice
         menu_choice=int(raw_input('Select Options from Menu\n'))
         if menu_choice==1:
-            current_status_message=AS.add_status(current_status_message)
+            spy.current_status_message=AS.add_status(spy.current_status_message)
         elif menu_choice==2:
-            AF.add_friend()
+            SF.add_friend()
         elif menu_choice==3:
-            pass
+            SF.send_message()
         elif menu_choice==4:
-            pass
+            SF.read_message()
         elif menu_choice==5:
             pass
         elif menu_choice==6:
@@ -36,41 +36,39 @@ print ('Welcome to Spy_Chat\n')
 #input profile choice
 profile_choice=int(raw_input('Enter 1 to go with default profile or 2 to enter Details\n'))
 if profile_choice==1:
-    spy_name=spy['name']
-    spy_rating=spy['rating']
-    spy_salutation=spy['salutation']
-    spy_age=spy['age']
+    spy=Spy('PierceBrosnan',27,'A+','Mr.')
 elif profile_choice==2:
-    spy_name=raw_input('Enter name of the spy\n')
-    spy_rating=raw_input('Enter rating of the spy\n')
-    spy_age=int(raw_input('Enter age of the spy\n'))
-    spy_salutation=raw_input('Enter The salutation Mr. or Ms.\n')
+    name=raw_input('Enter name of the spy\n')
+    rating=raw_input('Enter rating of the spy\n')
+    age=int(raw_input('Enter age of the spy\n'))
+    salutation=raw_input('Enter The salutation Mr. or Ms.\n')
+    spy=Spy(name,age,rating,salutation)
 else:
     print('Enter correct choice\n')
     sys.exit(0)
 
 #validating Name and Age
-if spy_name.isalpha() == False:
+if spy.name.isalpha() == False:
     print('Invalid Spy Name\n')
     sys.exit(0)
-if spy_age<18:
+if spy.age<18:
     print('Invalid age\n')
     sys.exit(0)
 
 #assgining stars according to ratings
-if spy_rating=='A+' or spy_rating=='a+':
+if spy.rating=='A+' or spy.rating=='a+':
     stars=5
-elif spy_rating=='A'or spy_rating=='a':
+elif spy.rating=='A'or spy.rating=='a':
     stars=4
-elif spy_rating=='B+'or spy_rating=='b+':
+elif spy.rating=='B+'or spy.rating=='b+':
     stars=3
-elif spy_rating=='B'or spy_rating=='b':
+elif spy.rating=='B'or spy.rating=='b':
     stars=2
 else:
     stars=1
 
 #printing details of spy
-print('\nWelcome %s%s.You are %d years old. Your rating is %d stars.\n'%(spy_salutation,spy_name,spy_age,stars))
+print('\nWelcome %s%s.You are %d years old. Your rating is %d stars.\n'%(spy.salutation,spy.name,spy.age,stars))
 
 #calling start_chat()
 start_chat()
