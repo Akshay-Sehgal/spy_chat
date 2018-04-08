@@ -5,5 +5,4 @@ class Spy:
         self.age=age
         self.salutation=salutation
         self.rating=rating
-        self.chats=[]
         self.current_status_message=None

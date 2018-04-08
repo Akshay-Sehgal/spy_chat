@@ -29,24 +29,42 @@ def add_friend():
 
 
 def load_friend():
+    names_list=[]
     count=0
     read_friend=open('friends.csv','r')
     read=csv.reader(read_friend)
     for row in read:
         count+=1
         print('%d. %s %s'%(count,row[0],row[1]))
+        names_list.append(row[1])
+    friend_choice=int(raw_input('Enter choice:\n'))
+    name=names_list[friend_choice-1]
+    return name
 
-#def load_chat():
-#def save_chat():
 def send_message():
+    name=load_friend()
     text=raw_input('Enter message:\n')
+    chat=Chat(text,True,name)
+    save_message=open('chats.csv','a')
+    save_m=csv.writer(save_message)
+    save_m.writerow([chat.friend_name,chat.message,chat.timestamp,chat.send_by_me])
+    print('Message Sent and saved\n')
+    #STEGANOGRAPHY
     image='E:\PYTHON+ML\spy_chat\\a.jpeg'
     output='o.jpg'
     Steganography.encode(image,output,text)
+    print('Latest Message encoded\n')
 
 
 
 def read_message():
+    name=load_friend()
+    read_message=open('chats.csv','r')
+    read_m=csv.reader(read_message)
+    for row in read_m:
+        if name==row[0]:
+            print('%s %s'%(row[1],row[2]))
+    #STEGANOGRAPHY
     output='o.jpg'
     message=Steganography.decode(output)
     print('Secret message: %s'%(message))
