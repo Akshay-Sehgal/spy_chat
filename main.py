@@ -11,7 +11,7 @@ def start_chat():
 
     #displaying menu of spy_chat
     while True:
-        print('\nMENU\n1. Add Status\n2. Add Friend\n3. Send Message\n4. Read Message\n5. Open Chat\n6. Close\n')
+        print('\nMENU\n1. Add Status\n2. Add Friend\n3. Send Message\n4. Read Message\n5. Close\n')
 
         #input choice
         menu_choice=int(raw_input('Select Options from Menu\n'))
@@ -24,8 +24,6 @@ def start_chat():
         elif menu_choice==4:
             SF.read_message()
         elif menu_choice==5:
-            pass
-        elif menu_choice==6:
             break
         else:
             print('\nPlease enter a valid choice\n')
