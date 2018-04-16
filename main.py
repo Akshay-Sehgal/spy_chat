@@ -8,6 +8,7 @@ import spy_friend as SF
 #start_chat() function
 def start_chat():
     current_status_message=None
+    friend_count=0
 
     #displaying menu of spy_chat
     while True:
@@ -19,7 +20,8 @@ def start_chat():
             spy.current_status_message=AS.add_status(spy.current_status_message)
             print('UPDATED STATUS MESSAGE : %s\n'%(spy.current_status_message))
         elif menu_choice==2:
-            SF.add_friend()
+            friend_count=SF.add_friend()
+            print('No. Of Friends You have : %d\n'%(friend_count))
         elif menu_choice==3:
             SF.send_message()
         elif menu_choice==4:
