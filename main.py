@@ -3,6 +3,21 @@ import sys
 from spy_class import Spy
 import add_status as AS
 import spy_friend as SF
+import csv
+
+#LOAD CHAT WHEN APPLICATION STARTS
+chats=[]
+load_chats=open('chats.csv','r')
+load=csv.reader(load_chats)
+for row in load:
+    chats.append(row)
+
+#LOAD FRIENDS WHEN APPLICATION STARTS
+friends=[]
+load_friends=open('friends.csv','r')
+load=csv.reader(load_friends)
+for row in load:
+    friends.append(row)
 
 
 #start_chat() function

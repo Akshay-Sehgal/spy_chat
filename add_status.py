@@ -24,7 +24,7 @@ def add_status(current_status_message):
             current_status_message=status[status_message_choice-1]
             return current_status_message
         except IOError:
-            print('*** NO PREVIOUS STATUS FOUND ***\n')
+            print('**** NO PREVIOUS STATUS FOUND ****\n')
     elif status_choice.upper()=='N':
         new_status_message=raw_input('\nEnter a new status message\n')
         if len(new_status_message)>0:

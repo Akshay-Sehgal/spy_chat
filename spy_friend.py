@@ -2,6 +2,8 @@ from spy_class import Spy
 from chat_class import Chat
 import csv
 from steganography.steganography import Steganography
+from colorama import init
+from colorama import Fore,Back
 friends=[]
 
 #add_friend fucntion
@@ -50,6 +52,7 @@ def load_friend():
     name=names_list[friend_choice-1]
     return name
 
+#SEND MESSAGE FUNCTION
 def send_message():
     name=load_friend()
     text=raw_input('Enter message:\n')
@@ -71,16 +74,21 @@ def send_message():
     print('Message Sent and saved\n')
 
 
-
+#READ MESSAGE FUNCTION WITH COLORS
 def read_message():
     name=load_friend()
     read_message=open('chats.csv','r')
     read_m=csv.reader(read_message)
+    #PRINTING CHAT TRANSCRIPT WITH DIFFERENT COLORS
+    init()
     for row in read_m:
         if name==row[0]:
-            print('%s %s'%(row[1],row[2]))
+            print(Back.WHITE)
+            print (Fore.RED+'%s'%(row[0])+Fore.BLACK+' %s'%(row[1])+Fore.BLUE+' %s'%(row[2]))
+    print(Back.RESET+Fore.RESET)
+
     #STEGANOGRAPHY
-    output=raw_input('Enter Name of the Image you want to decode!\n')
+    output=raw_input('\nEnter Name of the Image you want to decode!\n')
     message=Steganography.decode(output)
     print('Secret message: %s'%(message))
     if message.upper()=='SOS':
