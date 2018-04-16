@@ -17,6 +17,7 @@ def start_chat():
         menu_choice=int(raw_input('Select Options from Menu\n'))
         if menu_choice==1:
             spy.current_status_message=AS.add_status(spy.current_status_message)
+            print('UPDATED STATUS MESSAGE : %s\n'%(spy.current_status_message))
         elif menu_choice==2:
             SF.add_friend()
         elif menu_choice==3:

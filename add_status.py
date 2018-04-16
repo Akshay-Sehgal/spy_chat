@@ -12,18 +12,19 @@ def add_status(current_status_message):
     if status_choice.upper()=='Y':
         count=0
         status=[]
-        read_status=open('Status.csv','r')
-        read=csv.reader(read_status)
-        for row in read:
-            count+=1
-            print('%d.%s'%(count,row))
-            status.append(row)
-
-        read_status.close()
-        status_message_choice=int(raw_input('\nEnter your choice\n'))
-        current_status_message=status[status_message_choice-1]
-        return current_status_message
-
+        try:
+            read_status=open('Status.csv','r')
+            read=csv.reader(read_status)
+            for row in read:
+                count+=1
+                print('%d.%s'%(count,row))
+                status.append(row)
+            read_status.close()
+            status_message_choice=int(raw_input('\nEnter your choice\n'))
+            current_status_message=status[status_message_choice-1]
+            return current_status_message
+        except IOError:
+            print('*** NO PREVIOUS STATUS FOUND ***\n')
     elif status_choice.upper()=='N':
         new_status_message=raw_input('\nEnter a new status message\n')
         if len(new_status_message)>0:
